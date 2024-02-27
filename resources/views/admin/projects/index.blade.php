@@ -19,6 +19,7 @@
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">name</th>
+                    <th class="text-center" scope="col">type</th>
                     <th scope="col">description</th>
                     <th class="text-center" scope="col">command</th>
                 </tr>
@@ -28,6 +29,7 @@
                     <tr>
                         <th scope="row">{{ $project['id'] }}</th>
                         <td>{{ $project['name'] }}</td>
+                        <td class="text-center">{{ $project->type ? $project->type->name : 'Without type' }}</td>
                         <td>{{ Str::limit($project['description'], 50) }}</td>
                         <td class="d-flex justify-content-center ">
                             <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}"
