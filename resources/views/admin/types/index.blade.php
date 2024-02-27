@@ -30,15 +30,11 @@
                         <td>{{ $type->name }}</td>
                         <td>{{ count($type->projects) }}</td>
                         <td class="d-flex justify-content-center ">
-                            <a href="{{ route('admin.types.show', ['type' => $type->slug]) }}"
-                                class="btn btn-sm btn-primary">
-                                <i class="fa-solid fa-eye fa-xs"></i>
-                            </a>
-                            <a href="{{route('admin.types.edit', $type->slug) }}" class="btn btn-sm btn-warning mx-2 ">
+                            <a href="{{route('admin.types.edit', $type->slug) }}" class="btn btn-sm btn-warning me-2">
                                 <i class="fa-solid fa-pen-to-square fa-xs"></i>
                             </a>
 
-                            <button class="btn btn-sm btn-danger delete-button" data-bs-toggle="modal" data-bs-target="#modal_type_delete" data-typeslug="{{ $type->slug }}">
+                            <button class="btn btn-sm btn-danger delete-button" data-bs-toggle="modal" data-bs-target="#modal_type_delete" data-slug="{{ $type->slug }}">
                                 <i class="fa-solid fa-trash-can fa-xs"></i>
                             </button>
                         </td>
