@@ -14,6 +14,14 @@
         <h1>{{$project['name']}}</h1>
         <p>{{$project['description']}}</p>
         <div>
+            Type: 
+            @if ($project->type)
+                {{$project->type->name}}
+            @else
+                Without type
+            @endif
+        </div>
+        <div>
             <span>
                 Start Project:
                 {{$project['date_start']}}
