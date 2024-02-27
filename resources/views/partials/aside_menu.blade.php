@@ -9,7 +9,13 @@
         <li>
             <a class="asideMenuLink" href="{{ route('admin.projects.index')}}">
                 <i class="fa-solid fa-folder-tree fa-lg" style="color: #fff;"></i>
-                {{ __('Project') }}
+                {{ __('Projects') }}
+            </a>
+        </li>
+        <li>
+            <a class="asideMenuLink" href="{{ route('admin.types.index')}}">
+                <i class="fa-solid fa-cubes fa-lg" style="color: #fff;"></i>
+                {{ __('Types') }}
             </a>
         </li>
     </ul>
