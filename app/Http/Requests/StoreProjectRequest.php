@@ -38,7 +38,7 @@ class StoreProjectRequest extends FormRequest
             'name.max'              => 'Il campo deve avere massimo 150 caratteri',
             'name.unique'           => 'Esiste già un progetto con questo nome',
             'type_id.required'      => 'Il campo Project Type è obbligatorio.',
-            'type_id.exists'         => 'Il campo Project Type non è valido.',
+            'type_id.exists'        => 'Il campo Project Type non è valido.',
             'link.required'         => 'Il campo Link Project è obbligatorio.',
             'description.required'  => 'Il campo Project Description è obbligatorio.',
             'date_start.required'   => 'Il campo Start Date Project è obbligatorio.',

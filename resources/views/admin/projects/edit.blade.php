@@ -30,7 +30,7 @@
                 </div>
     
                 {{-- Img Proj --}}
-                <div class="col-12 mt-3 ">
+                <div class="col-6 mt-3 ">
                     <label class="form-label my-label" for="imgProject">Project Image</label>
                     <input class="form-control form-control-sm @error('img') is-invalid border-danger @enderror" accept="image/*" type="file" name="img" id="imgProject">
                     @if (Str::contains($project->img, 'https'))
@@ -40,6 +40,21 @@
                     @endif
                     @error('img')
                         <div id="imgProject" class="form-text text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                {{-- Select Type --}}
+                <div class="col-6 mt-3 ">
+                    <label class="form-label my-label" for="typeProject">Project Type</label>
+                    <select class="form-select form-select-sm @error('type_id') is-invalid border-danger @enderror" name="type_id" id="typeProject">
+                        <option value="{{old('type_id')}}" selected>Select type</option>
+                        @foreach ($types as $type)
+                        <option value="{{$type->id}}" @selected($type->id == old('type_id', $project->type ? $project->type->id : ''))>{{$type->name}}</option>  
+                        @endforeach
+
+                    </select>
+                    @error('type_id')
+                        <div id="dateStartError" class="form-text text-danger">{{$message}}</div>
                     @enderror
                 </div>
     

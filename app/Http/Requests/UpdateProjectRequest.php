@@ -25,6 +25,7 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'name'              => 'required|max:150',
+            'type_id'           => 'required|exists:types,id',
             'repository_link'   => 'required',
             'description'       => 'required',
             'date_start'        => 'required|date',
@@ -35,6 +36,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'name.required'         => 'Il campo Name Project è obbligatorio.',
             'name.max'              => 'Il campo deve avere massimo 150 caratteri',
+            'type_id.required'      => 'Il campo Project Type è obbligatorio.',
+            'type_id.exists'        => 'Il campo Project Type non è valido.',
             'link.required'         => 'Il campo Link Project è obbligatorio.',
             'description.required'  => 'Il campo Project Description è obbligatorio.',
             'date_start.required'   => 'Il campo Start Date Project è obbligatorio.',
