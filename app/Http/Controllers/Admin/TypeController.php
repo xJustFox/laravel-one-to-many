@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class TypeController extends Controller
 {
@@ -67,9 +68,15 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit(Type $type, Request $request)
     {
-        //
+        $error_message = '';
+        if (!empty($request->all())) {
+            $messages = $request->all();
+            $error_message = $messages['error_message'];
+        }
+
+        return view('admin.types.edit', compact('type', 'error_message') );
     }
 
     /**
@@ -81,7 +88,18 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $form_data = $request->all();
+
+        $exists = Type::where('name', 'LIKE', $form_data['name'])->where('id', '!=', $type['id'])->get();
+        if (count($exists) > 0) {
+            $error_message = 'Hai inserito un titolo già presente in un altro progetto';
+            return redirect()->route('admin.types.edit', compact('type', 'error_message'));
+        }
+
+        $type['slug'] = Str::slug($form_data['name']);
+        $type->update($form_data);
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -92,6 +110,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return redirect()->route('admin.types.index');
     }
 }

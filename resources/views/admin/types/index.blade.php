@@ -8,7 +8,7 @@
             </h2>
 
             <a class="btn btn-sm btn-primary mx-3" href="{{ route('admin.types.create') }}">
-                <i class="fa-solid fa-folder-plus px-1"></i>
+                <i class="fa-solid fa-square-plus px-1"></i>
                 Add Types
             </a>
 
@@ -20,6 +20,7 @@
                     <th scope="col">id</th>
                     <th scope="col">name</th>
                     <th scope="col">project</th>
+                    <th scope="col">last edit</th>
                     <th scope="col">command</th>
                 </tr>
             </thead>
@@ -29,12 +30,13 @@
                         <th scope="row">{{ $type->id }}</th>
                         <td>{{ $type->name }}</td>
                         <td>{{ count($type->projects) }}</td>
+                        <td>{{ $type->updated_at }}</td>
                         <td class="d-flex justify-content-center ">
                             <a href="{{route('admin.types.edit', $type->slug) }}" class="btn btn-sm btn-warning me-2">
                                 <i class="fa-solid fa-pen-to-square fa-xs"></i>
                             </a>
 
-                            <button class="btn btn-sm btn-danger delete-button" data-bs-toggle="modal" data-bs-target="#modal_type_delete" data-slug="{{ $type->slug }}">
+                            <button class="btn btn-sm btn-danger delete-button" data-bs-toggle="modal" data-bs-target="#modal_delete" data-path="types" data-slug="{{ $type->slug }}">
                                 <i class="fa-solid fa-trash-can fa-xs"></i>
                             </button>
                         </td>
@@ -43,5 +45,5 @@
             </tbody>
         </table>
     </div>
-    {{-- @include('admin.types.partials.modal_delete') --}}
+    @include('partials.modal_delete')
 @endsection

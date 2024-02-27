@@ -47,7 +47,7 @@
                                     <i class="fa-solid fa-trash-can fa-xs"></i>
                                 </button>
                             </form> --}}
-                            <button class="btn btn-sm btn-danger delete-button" data-bs-toggle="modal" data-bs-target="#modal_project_delete" data-projectslug="{{ $project->slug }}">
+                            <button class="btn btn-sm btn-danger delete-button" data-bs-toggle="modal" data-bs-target="#modal_delete" data-path="projects" data-slug="{{ $project->slug }}">
                                 <i class="fa-solid fa-trash-can fa-xs"></i>
                             </button>
                         </td>
@@ -56,5 +56,5 @@
             </tbody>
         </table>
     </div>
-    @include('admin.projects.partials.modal_delete')
+    @include('partials.modal_delete')
 @endsection

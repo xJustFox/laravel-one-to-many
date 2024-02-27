@@ -6,13 +6,23 @@ import.meta.glob([
 ])
 
 // repupero pulsanti dalla tabella
-const deletButtons = document.querySelectorAll('.delete-button');
+const deleteButtons = document.querySelectorAll('.delete-button');
 
-deletButtons.forEach((button) => {
+deleteButtons.forEach((button) => {
     button.addEventListener('click', function(){
-        let project_slug = button.getAttribute('data-projectslug');
+        let slug = button.getAttribute('data-slug');
+        let path = button.getAttribute('data-path');
 
-        let url = `${window.location.origin}/admin/projects/${project_slug}`;
+        let text_modal = document.getElementById('custom-message-modal');
+
+        if (path == 'types') {
+            text_modal.textContent = 'tipo';
+        }
+        else{
+            text_modal.textContent = 'progetto';
+        }
+
+        let url = `${window.location.origin}/admin/${path}/${slug}`;
 
         let form_delete = document.getElementById('form-delete');
 
