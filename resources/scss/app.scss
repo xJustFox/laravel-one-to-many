@@ -2,6 +2,7 @@
 
 nav {
     background-color: #36498f;
+    height: 70px;
 }
 
 main {
@@ -16,6 +17,9 @@ main {
         li {
             margin-bottom: 10px;
 
+            .activeRoute{
+                color: #ff5404;
+            }
 
             .asideMenuLink {
                 i {
